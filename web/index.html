@@ -6,42 +6,34 @@
         <meta name="description" content="Kik TabKeeper">
         <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
         <meta name="kik-prefer" content="true">
-        <link rel="kik-icon" href="/img/icon.png">
+        <link rel="kik-icon" href="img/icon.png">
 
         <!-- Styles -->
-        <link rel="stylesheet" href="http://cdn.kik.com/app/1.10.0/default.css">
         <link rel="stylesheet" href="css/styles.css">
         <link rel="stylesheet" href="css/app.css?inline=1">
+        <link rel="stylesheet" href="css/page-splash.css?inline=1">
     </head>
 
     <body>
         <!-- Pages -->
 
-        <div class="app-page summary-page" data-page="summary">
-            <div class="app-topbar">
-                <div class="app-title"></div>
-                <div class="app-button right" data-back="true">+</div>
-            </div>
+        <div class="app-page splash-page" data-page="splash">
             <div class="app-content">
-                <div class="header"></div>
-                <div class="persons">
-                    <div class="person">
-                        <div class="text">
-                            <div class="name"></div>
-                            <div class="balance"></div>
-                        </div>
-                    </div>
-                </div>
+              <div class="holder">
+                <div class="title">TABKEEPER</div>
+                <div class="app-button login">Log in with Kik</div>
+                <div class="warning">You must Link to Kik to Login</div>
+              </div>
             </div>
         </div>
 
 
         <!-- Scripts -->
         <script src="zerver/API.js"></script>
-        <script src="http://cdn.kik.com/kik/1.0.0/kik.js"></script>
-        <script src="http://zeptojs.com/zepto.min.js"></script>
+        <script type="text/javascript" src="js/kik.js?inline=1"></script>
+        <script type="text/javascript" src="js/app.js?inline=1"></script>
         <script src="js/app.js?inline=1"></script>
-        <script src="js/summary-page.js"></script>
+        <script src="js/page-splash.js"></script>
         <script src="js/main.js"></script>
     </body>
 </html>

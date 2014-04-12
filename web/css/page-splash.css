@@ -1,0 +1,33 @@
+.holder {
+    margin: 64% 12% 0 12%;
+}
+
+.title {
+    text-align: center;
+    letter-spacing: 6px;
+    font-size: 24px;
+    font-family: "Times New Roman", Times, serif;
+}
+
+.app-content .app-button.login {
+    background-color: #666;
+    color: #FFF;
+    margin: 5% 10% 0 10%;
+    height: 34px;
+    line-height: 34px;
+    font-family: 'Lato','Helvetica Neue',Helvetica,Arial,sans-serif;
+}
+
+.app-content .app-button.login.active {
+    background-color: #3D3D3D;
+}
+
+.warning {
+    width: 100%;
+    text-align: center;
+    margin-top: 34%;
+    /* display: none; */
+    height: 30px;
+    font-size: 15px;
+    color: rgb(255, 69, 69);
+}
