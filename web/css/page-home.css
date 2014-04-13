@@ -1,0 +1,143 @@
+.app-topbar .app-title {
+    text-align: center;
+    letter-spacing: 7px;
+    padding-left: 9px;
+    font-size: 15px;
+    font-family: "Times New Roman", Times, serif;
+}
+
+.app-topbar {
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+    background-color: #49BBDF;
+}
+
+.app-topbar .app-button.right.add-tab {
+    font-weight: 600;
+    font-size: 30px;
+    line-height: 39px;
+    color: #FFFFFF;
+}
+
+.header {
+    overflow: auto;
+    border-bottom: 1px solid #AFAFAF;
+    background-color: #D4E6DD;
+}
+
+.border {
+    border-right: 1px solid #AFAFAF;
+}
+
+.summary {
+    float: left;
+    width: 33.12%;
+    background-color: #D4E6DD;
+}
+
+.title {
+    text-align: center;
+    font-size: 13px;
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    color: rgb(95, 93, 93);
+    padding-top: 4px;
+}
+
+.amount-owed {
+    text-align: center;
+    font-size: 15px;
+    font-weight: 200;
+    padding-bottom: 2px;
+}
+
+.positive {
+    color: #47A295;
+}
+
+.negative {
+    color: #E0593B;
+}
+
+.tab {
+    height: 63px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.tab-section {
+    overflow: auto;
+}
+
+.user-thumbnail {
+    padding: 5px;
+    float: left;
+    text-align: center;
+    -webkit-border-radius: 160px;
+    border-radius: 60%;
+    height: 50px;
+    width: 50px;
+}
+
+.contact-info {
+    height: 53px;
+    float: left;
+    width: 53%;
+    padding: 5px;
+}
+
+.contact-fullname {
+    height: 55%;
+    position: relative;
+}
+
+.contact-fullname span {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.contact-username {
+    position: relative;
+    height: 45%;
+    font-size: 13px;
+    font-weight: 200;
+}
+
+.contact-username span {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.amount-info {
+    float: right;
+    padding: 5px;
+    height: 53px;
+    width: 20%;
+}
+
+.amount-info .text {
+    height: 55%;
+    position: relative;
+}
+
+.amount-info .text span {
+    font-size: 13px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+.amount-info .amount-owed {
+    height: 45%;
+    position: relative;
+}
+
+.amount-info .amount-owed span {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.large {
+    font-size: 17px;
+    font-weight: 400;
+}
