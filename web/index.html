@@ -72,14 +72,36 @@
 
         <div class="app-page detailedView-page" data-page="detailedView">
           <div class="app-topbar">
-            <div class="app-button left" data-back="true" data-autotitle="false"></div>
+            <div class="app-button left" data-back="true" data-autotitle="false">Back</div>
             <div class="app-title">Username</div>
           </div>
           <div class="app-content">
             <div class="profile-header">
               <img class="pic user-picture" src="img/noprofile.png">
-              <div class="user-info"
+              <div class="user-info">
+                <div class="contact-info">
+                  <div class="contact-fullname"><span id="fullname">Kevin McGaire</span></div>
+                  <div class="contact-username"><span id="username">kmcgaire</span></div>
+                </div>
+                <div class="amount-info">
+                  <div class="text positive"><span id="text">owing</span></div>
+                  <div class="amount-owed large positive"><span id="owed">$3.50</span></div>
+                </div>
+              </div>
+
+              <div class="buttons-section">
+                <div class="kevin-button payment">add payment</div>
+                <div class="kevin-button remind">remind</div>
+              </div>
+
             </div>
+          </div>
+        </div>
+
+        <div class="app-page addContact-page" data-page="addContact">
+          <div class="app-topbar">
+            <div class="app-button left" data-back="true" data-autotitle="false">Back</div>
+            <div class="app-title">Add Contact</div>
           </div>
         </div>
 

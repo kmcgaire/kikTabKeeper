@@ -1,5 +1,33 @@
 .user-picture {
-    padding: 5px;
-    height: 100px;
-    width: 100px;
+    padding: 1%;
+    height: 30%;
+    width: 30%;
+}
+
+.buttons-section {
+    float:left;
+    width: 68%;
+}
+
+.kevin-button {
+    float:left;
+    width:45%;
+    padding:1%;
+}
+
+.profile-header {
+    overflow: auto;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    background: rgb(229, 245, 245);
+}
+
+.app-page.detailedView-page .contact-info {
+    height: 50px;
+    width: 53%;
+}
+
+.user-info {
+    float: left;
+    width: 66%;
+    margin: 1%;
 }

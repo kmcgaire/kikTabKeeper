@@ -5,8 +5,9 @@
 
 App.populator('home', function($page, data){
   var $tabTemplate = $page.querySelector('.tab'),
-    username = data.username,
-    $tabParent = $tabTemplate.parentNode;
+    $tabParent = $tabTemplate.parentNode,
+    $addTab = $page.querySelector('.add-tab'),
+    username = data.username;
 
   $tabTemplate.parentNode.removeChild($tabTemplate);
 
@@ -20,7 +21,13 @@ App.populator('home', function($page, data){
     }
   });
 
-
+  $addTab.addEventListener('click', function () {
+    App.load('addContact', {}, {
+      transition : 'scale-in'  ,
+      duration   : 300           , // in milliseconds
+      easing     : 'ease-in-out'
+    })
+  });
 
   function renderTab(user){
     var $tab = $tabTemplate.cloneNode(true);

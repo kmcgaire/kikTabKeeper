@@ -4,3 +4,32 @@
     -webkit-border-radius: 160px;
     border-radius: 60%;
 }
+
+.contact-info {
+    float: left;
+    padding: 5px;
+}
+
+.contact-fullname {
+    height: 55%;
+    position: relative;
+}
+
+.contact-fullname span {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.contact-username {
+    position: relative;
+    height: 45%;
+    font-size: 13px;
+    font-weight: 200;
+}
+
+.contact-username span {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
