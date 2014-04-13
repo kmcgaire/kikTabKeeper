@@ -1,3 +1,6 @@
-.kevin-green {
-    background: #5bc5a7;
+.pic {
+    float: left;
+    text-align: center;
+    -webkit-border-radius: 160px;
+    border-radius: 60%;
 }

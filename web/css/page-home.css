@@ -62,16 +62,16 @@
     border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
+.tab.active {
+    background-color: lightgray;
+}
+
 .tab-section {
     overflow: auto;
 }
 
 .user-thumbnail {
     padding: 5px;
-    float: left;
-    text-align: center;
-    -webkit-border-radius: 160px;
-    border-radius: 60%;
     height: 50px;
     width: 50px;
 }

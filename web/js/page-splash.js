@@ -9,7 +9,11 @@ App.populator('splash', function ($page) {
       if (!user) {
         warning.style.display = 'block';
       } else {
-        App.load('home', user);
+        App.load('home', user, {
+          transition : 'fade'  ,
+          duration   : 1000           , // in milliseconds
+          easing     : 'ease'
+        });
       }
     });
   });
