@@ -6,13 +6,14 @@
         <meta name="description" content="Keep track of who owes you money">
         <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
         <meta name="kik-prefer" content="true">
+
         <link rel="kik-icon" href="img/icon.png">
 
         <!-- Styles -->
         <link rel="stylesheet" href="css/styles.css">
         <link rel="stylesheet" href="css/app.css?inline=1">
         <link rel="stylesheet" href="css/page-splash.css?inline=1">
-      <link rel="stylesheet" href="css/page-home.css?inline=1">
+        <link rel="stylesheet" href="css/page-home.css?inline=1">
     </head>
 
     <body>
@@ -54,42 +55,49 @@
               <div class="tab">
                   <img class="user-thumbnail pic" src="img/noprofile.png">
                 <div class="contact-info">
-                  <div class="contact-fullname"><span>Kevin McGaire</span></div>
-                  <div class="contact-username"><span>kmcgaire</span></div>
+                  <div class="contact-fullname"><span id="fullname">Kevin McGaire</span></div>
+                  <div class="contact-username"><span id="username">kmcgaire</span></div>
                 </div>
                 <div class="amount-info">
-                  <div class="text negative"><span>owing</span></div>
-                  <div class="amount-owed large negative"><span>$3.50</span></div>
+                  <div class="text"><span id="text">owing</span></div>
+                  <div class="amount-owed large"><span id="owed">$3.50</span></div>
                 </div>
               </div>
 
-              <div class="tab">
-                <img class="user-thumbnail" src="img/noprofile.png">
-                <div class="contact-info">
-                  <div class="contact-fullname"><span>Robin Sharma</span></div>
-                  <div class="contact-username"><span>robinsharms</span></div>
-                </div>
-                <div class="amount-info">
-                  <div class="text positive"><span>owed to u</span></div>
-                  <div class="amount-owed large positive"><span>$2.50</span></div>
-                </div>
-              </div>
+              <!--<div class="tab">-->
+                <!--<img class="user-thumbnail" src="img/noprofile.png">-->
+                <!--<div class="contact-info">-->
+                  <!--<div class="contact-fullname"><span>Robin Sharma</span></div>-->
+                  <!--<div class="contact-username"><span>robinsharms</span></div>-->
+                <!--</div>-->
+                <!--<div class="amount-info">-->
+                  <!--<div class="text positive"><span>owed to u</span></div>-->
+                  <!--<div class="amount-owed large positive"><span>$2.50</span></div>-->
+                <!--</div>-->
+              <!--</div>-->
 
-              <div class="tab">
-                <img class="user-thumbnail pic" src="img/noprofile.png">
-                <div class="contact-info">
-                  <div class="contact-fullname"><span>Mitchell Van Der Heoff</span></div>
-                  <div class="contact-username"><span>theMizzler</span></div>
-                </div>
-                <div class="amount-info">
-                  <div class="text positive"><span>owed to u</span></div>
-                  <div class="amount-owed large positive"><span>$3.00</span></div>
-                </div>
-              </div>
+              <!--<div class="tab">-->
+                <!--<img class="user-thumbnail pic" src="img/noprofile.png">-->
+                <!--<div class="contact-info">-->
+                  <!--<div class="contact-fullname"><span>Mitchell Van Der Heoff</span></div>-->
+                  <!--<div class="contact-username"><span>theMizzler</span></div>-->
+                <!--</div>-->
+                <!--<div class="amount-info">-->
+                  <!--<div class="text positive"><span>owed to u</span></div>-->
+                  <!--<div class="amount-owed large positive"><span>$3.00</span></div>-->
+                <!--</div>-->
+              <!--</div>-->
 
             </div>
 
 
+          </div>
+        </div>
+
+        <div class="app-page detailedView-page" data-page="detailedView">
+          <div class="app-topbar">
+            <div class="app-button left" data-back="true"></div>
+            <div class="app-title">Username</div>
           </div>
         </div>
 
@@ -100,6 +108,8 @@
         <script type="text/javascript" src="js/app.js?inline=1"></script>
         <script src="js/app.js?inline=1"></script>
         <script src="js/page-splash.js"></script>
+        <script src="js/page-home.js"></script>
+        <script src="js/page-detailedView.js"></script>
         <script src="js/main.js"></script>
     </body>
 </html>
