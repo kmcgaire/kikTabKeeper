@@ -9,10 +9,24 @@
     width: 68%;
 }
 
-.kevin-button {
-    float:left;
-    width:45%;
-    padding:1%;
+
+
+.buttons-section div {
+    float: left;
+    background-color: rgb(176, 231, 184);
+    font-size: 12px;
+    padding: 7px 0 5px 0;
+    height: 16px;
+    margin: -3px 0 0 15px;
+    width: 40%;
+    text-align: center;
+    color: rgb(85, 84, 84);
+    border-radius: 6px;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.45);
+}
+
+.buttons-section div.active {
+    background-color: rgb(130, 192, 141);;
 }
 
 .profile-header {

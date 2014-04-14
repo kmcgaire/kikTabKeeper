@@ -6,16 +6,14 @@
 App.populator('home', function($page, data){
   var $tabTemplate = $page.querySelector('.tab'),
     $tabParent = $tabTemplate.parentNode,
-    $addTab = $page.querySelector('.add-tab'),
+    $addTab = $page.querySelector('.new-tab'),
     username = data.username;
 
   $tabTemplate.parentNode.removeChild($tabTemplate);
 
   API.getSummaryData(username, function (users) {
-    console.log('test');
     if(users){
       users.forEach(function (user) {
-        console.log(JSON.stringify(user));
         renderTab(user);
       })
     }
@@ -28,6 +26,7 @@ App.populator('home', function($page, data){
       easing     : 'ease-in-out'
     })
   });
+
 
   function renderTab(user){
     var $tab = $tabTemplate.cloneNode(true);

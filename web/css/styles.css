@@ -33,3 +33,39 @@
     top: 0;
     left: 0;
 }
+
+.amount-info {
+    float: right;
+    padding: 5px;
+    height: 53px;
+    width: 20%;
+}
+
+.amount-info .text {
+    height: 55%;
+    position: relative;
+}
+
+.amount-info .text span {
+    font-size: 13px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+.amount-info .amount-owed {
+    height: 45%;
+    position: relative;
+}
+
+.amount-info .amount-owed span {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+.app-topbar .app-button.right.add {
+    font-weight: 600;
+    font-size: 30px;
+    line-height: 39px;
+    color: #FFFFFF;
+}
