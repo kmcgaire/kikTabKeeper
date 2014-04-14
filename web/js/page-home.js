@@ -3,7 +3,7 @@
  */
 
 
-App.populator('home', function($page, data){
+App.populator('home', function ($page, data) {
   var $tabTemplate = $page.querySelector('.tab'),
     $tabParent = $tabTemplate.parentNode,
     $addTab = $page.querySelector('.new-tab'),
@@ -12,7 +12,7 @@ App.populator('home', function($page, data){
   $tabTemplate.parentNode.removeChild($tabTemplate);
 
   API.getSummaryData(username, function (users) {
-    if(users){
+    if (users) {
       users.forEach(function (user) {
         renderTab(user);
       })
@@ -21,26 +21,26 @@ App.populator('home', function($page, data){
 
   $addTab.addEventListener('click', function () {
     App.load('addContact', {}, {
-      transition : 'scale-in'  ,
-      duration   : 300           , // in milliseconds
-      easing     : 'ease-in-out'
+      transition: 'scale-in',
+      duration: 300, // in milliseconds
+      easing: 'ease-in-out'
     })
   });
 
 
-  function renderTab(user){
+  function renderTab(user) {
     var $tab = $tabTemplate.cloneNode(true);
     var userPic = $tab.querySelector('.user-thumbnail');
-    if(user.thumbnail){
+    if (user.thumbnail) {
       userPic.src = user.thumbnail;
     } else {
       userPic.src = "img/noprofile.png";
     }
-    $tab.querySelector('#fullname').innerHTML = user.fullName;
-    $tab.querySelector('#username').innerHTML = user.username;
-    var owed = $tab.querySelector('#owed');
-    var text = $tab.querySelector('#text');
-    if (user.balance > 0){
+    $tab.querySelector('#fullname-home').innerHTML = user.fullName;
+    $tab.querySelector('#username-home').innerHTML = user.username;
+    var owed = $tab.querySelector('#owed-home');
+    var text = $tab.querySelector('#text-home');
+    if (user.balance > 0) {
       text.innerHTML = 'owed to u';
       text.classList.add('positive');
       owed.classList.add('positive');
@@ -55,10 +55,10 @@ App.populator('home', function($page, data){
     $tabParent.appendChild($tab);
   }
 
-  function setTabClickable($tabElement, username){
+  function setTabClickable($tabElement, username) {
     new Clickable($tabElement);
     $tabElement.addEventListener('click', function () {
-      var data = {username: username}
+      var data = {username: username};
       App.load('detailedView', data);
     });
   }
