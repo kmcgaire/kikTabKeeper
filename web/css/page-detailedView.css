@@ -35,12 +35,12 @@
     background: rgb(229, 245, 245);
 }
 
-.app-page.detailedView-page .contact-info {
+.app-page.detailedView-page .item-text {
     height: 50px;
     width: 53%;
 }
 
-.user-info {
+#user-info {
     float: left;
     width: 66%;
     margin: 1%;

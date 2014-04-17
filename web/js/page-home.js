@@ -4,7 +4,7 @@
 
 
 App.populator('home', function ($page, data) {
-  var $tabTemplate = $page.querySelector('.tab'),
+  var $tabTemplate = $page.querySelector('#tab'),
     $tabParent = $tabTemplate.parentNode,
     $addTab = $page.querySelector('.new-tab'),
     username = data.username;
