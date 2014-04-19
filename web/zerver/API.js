@@ -76,9 +76,22 @@ exports.getTabList = function(owner, username, callback){
         fullName: 'Robin Sharma'
       } ,
       amount: 1.20,
-      current: 'dollars',
+      currency: 'dollars',
       description:'Pancakes',
-      date: new Date().getTime()
+      date: new Date().toDateString()
+    } , {
+      lender: {
+        username: 'kmcgaire',
+        fullName: 'Kevin McGaire'
+      } ,
+      borrower: {
+        username: 'theMizzler',
+        fullName: 'mitchel'
+      } ,
+      amount: 3.20,
+      currency: 'dollars',
+      description:'Pancakes',
+      date: "Sat Apr 19 2014"
     }
   ];
 

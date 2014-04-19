@@ -7,11 +7,11 @@ App.populator('home', function ($page, data) {
   var $tabTemplate = $page.querySelector('#tab'),
     $tabParent = $tabTemplate.parentNode,
     $addTab = $page.querySelector('.new-tab'),
-    username = data.username;
+    client = data.username;
 
-  $tabTemplate.parentNode.removeChild($tabTemplate);
+  $tabParent.removeChild($tabTemplate);
 
-  API.getSummaryData(username, function (users) {
+  API.getSummaryData(client, function (users) {
     if (users) {
       users.forEach(function (user) {
         renderTab(user);
@@ -58,7 +58,10 @@ App.populator('home', function ($page, data) {
   function setTabClickable($tabElement, username) {
     new Clickable($tabElement);
     $tabElement.addEventListener('click', function () {
-      var data = {username: username};
+      var data = {
+        client: client,
+        username: username
+      };
       App.load('detailedView', data);
     });
   }
