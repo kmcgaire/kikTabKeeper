@@ -5,6 +5,10 @@
     border-radius: 60%;
 }
 
+.item {
+    height: 63px;
+}
+
 .item-text {
     float: left;
     padding: 5px;
@@ -68,4 +72,25 @@
     font-size: 30px;
     line-height: 39px;
     color: #FFFFFF;
+}
+
+.kevin-button {
+    background-color: rgb(176, 231, 184);
+    font-size: 12px;
+    height: 16px;
+    text-align: center;
+    color: rgb(85, 84, 84);
+    border-radius: 6px;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.45);
+}
+
+.kevin-button.active {
+    background-color: rgb(130, 192, 141);
+}
+
+.kevin-button.two {
+    float: left;
+    margin: -3px 0 0 15px;
+    padding: 7px 0 5px 0;
+    width: 40%;
 }

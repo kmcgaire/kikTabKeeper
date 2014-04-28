@@ -4,7 +4,7 @@
 
 
 App.populator('home', function ($page, data) {
-  var $tabTemplate = $page.querySelector('#tab'),
+  var $tabTemplate = $page.querySelector('.item.tab'),
     $tabParent = $tabTemplate.parentNode,
     $addTab = $page.querySelector('.new-tab'),
     client = data.username;
@@ -50,6 +50,7 @@ App.populator('home', function ($page, data) {
       owed.classList.add('negative');
     }
     owed.innerHTML = '$' + Number(user.balance).toFixed(2);
+    $tab.id = user.username;
 
     setTabClickable($tab, user.username);
     $tabParent.appendChild($tab);

@@ -4,35 +4,15 @@
     width: 30%;
 }
 
-.buttons-section {
+.profile-header .buttons-section {
     float:left;
     width: 68%;
 }
 
 #individual-tab {
-    height: 63px;
+    height: 50px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.05);
     margin-left: 3px;
-}
-
-
-
-.buttons-section div {
-    float: left;
-    background-color: rgb(176, 231, 184);
-    font-size: 12px;
-    padding: 7px 0 5px 0;
-    height: 16px;
-    margin: -3px 0 0 15px;
-    width: 40%;
-    text-align: center;
-    color: rgb(85, 84, 84);
-    border-radius: 6px;
-    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.45);
-}
-
-.buttons-section div.active {
-    background-color: rgb(130, 192, 141);;
 }
 
 .profile-header {
@@ -41,7 +21,16 @@
     background: rgb(229, 245, 245);
 }
 
-.app-page.detailedView-page .item-text {
+#individual-tab .item-text {
+    height: 40px;
+    width: 53%;
+}
+
+#individual-tab .amount-info {
+    height: 40px;
+}
+
+#user-info .item-text {
     height: 50px;
     width: 53%;
 }

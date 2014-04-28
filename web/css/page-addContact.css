@@ -1,0 +1,15 @@
+.select-friend {
+    height: 30px;
+    margin: 5px;
+    line-height: 30px;
+    font-size: 15px;
+}
+
+.select-friend.active {
+    background-color: rgb(130, 192, 141);
+}
+
+.app-page.addContact-page .item-text {
+    height: 53px;
+    width: 53%;
+}
