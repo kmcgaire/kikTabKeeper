@@ -11,7 +11,6 @@ App.populator('addContact', function ($page, data) {
 
   new Clickable($selectFriend);
   $selectFriend.addEventListener('click', function () {
-    console.log("WHATTT");
     kik.pickUsers({
       minResults : 1 ,
       maxResults : 1 ,
@@ -41,7 +40,6 @@ App.populator('addContact', function ($page, data) {
   }
 
   function renderAmount(amount){
-    console.log('hello');
     var owed = $tab.querySelector('#owed-add');
     var text = $tab.querySelector('#text-add');
     if (amount > 0) {
