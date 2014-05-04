@@ -5,11 +5,41 @@
 App.populator('addContact', function ($page, data) {
   var $tab = $page.querySelector('.tab'),
     $selectFriend = $page.querySelector('.select-friend'),
-    hasSelectedFriend = false;
-
-  renderAmount(10.2);
+    $createTab = $page.querySelector('.create-initial-tab'),
+    hasSelectedFriend = false,
+    $isSelected = $page.querySelector('.isSelected'),
+    owner = data.username;
 
   new Clickable($selectFriend);
+  new Clickable($createTab);
+
+  $createTab.addEventListener('click', function () {
+    var desc = $page.querySelector('#description').value,
+      amount = $page.querySelector('#amount').value;
+    var isValidAmount = !isNaN(amount) && (amount.length != 0);
+    var isValidDescription = desc.length !== 0;
+    var isValidTab = isValidAmount && isValidDescription;
+    if (isValidTab){
+      API.createNewContact(owner,$tab.id, function (res) {
+        if(res){
+          console.log('adding');
+          console.log(owner);
+          console.log($tab.id);
+        }
+      })
+    } else if (!isValidDescription){
+      App.dialog({
+        title: 'Please Enter a Description',
+        okButton: 'Ok'
+      });
+    } else if (!isValidAmount) {
+      App.dialog({
+        title: 'Please Enter a Valid Amount',
+        okButton: 'Ok'
+      });
+    }
+  });
+
   $selectFriend.addEventListener('click', function () {
     kik.pickUsers({
       minResults : 1 ,
@@ -21,6 +51,7 @@ App.populator('addContact', function ($page, data) {
       } else {
         users.forEach(function (user) {
           hasSelectedFriend = true;
+          $isSelected.style.display = 'block';
           renderUser(user);
         });
       }
@@ -39,18 +70,5 @@ App.populator('addContact', function ($page, data) {
     $tab.id = user.username;
   }
 
-  function renderAmount(amount){
-    var owed = $tab.querySelector('#owed-add');
-    var text = $tab.querySelector('#text-add');
-    if (amount > 0) {
-      text.innerHTML = 'owed to u';
-      text.classList.add('positive');
-      owed.classList.add('positive');
-    } else {
-      text.innerHTML = 'owing';
-      text.classList.add('negative');
-      owed.classList.add('negative');
-    }
-    owed.innerHTML = '$' + amount.toFixed(2);
-  }
+
 });

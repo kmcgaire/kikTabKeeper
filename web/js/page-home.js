@@ -20,7 +20,7 @@ App.populator('home', function ($page, data) {
   });
 
   $addTab.addEventListener('click', function () {
-    App.load('addContact', {}, {
+    App.load('addContact', {username: data.username}, {
       transition: 'scale-in',
       duration: 300, // in milliseconds
       easing: 'ease-in-out'

@@ -13,3 +13,32 @@
     height: 53px;
     width: 53%;
 }
+
+.isSelected {
+    display: none;
+}
+
+
+.initial-tab {
+    text-align: center;
+    letter-spacing: 4px;
+    font-size: 20px;
+    padding: 7px 5px 5px 6px;
+    border-top: 1px solid darkgrey;
+    border-bottom: 1px solid darkgrey;
+    font-family: "Times New Roman", Times, serif;
+    background-color: rgba(73, 187, 223, 0.25);
+}
+
+.contact-input{
+    border-radius: 10px;
+    margin: 11px;
+    width: 93%;
+}
+
+.create-initial-tab{
+    height: 30px;
+    margin: 5px 50px;
+    line-height: 30px;
+    font-size: 15px;
+}

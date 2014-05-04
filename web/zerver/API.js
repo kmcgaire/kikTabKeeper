@@ -1,4 +1,7 @@
 
+exports.createNewContact = function (owner, contact, callback) {
+  callback(true);
+};
 
 exports.getSummaryData = function (username, callback) {
   var sampleData = [
@@ -187,4 +190,4 @@ exports.getTabList = function(owner, username, callback){
   ];
 
   callback(sampleData);
-}
+};
