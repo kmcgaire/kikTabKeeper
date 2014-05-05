@@ -7,13 +7,36 @@ App.populator('detailedView', function ($page, data) {
     $remind = $page.querySelector('.remind'),
     $tabTemplate = $page.querySelector('#individual-tab'),
     $tabParent = $tabTemplate.parentNode,
+    $addTab = $page.querySelector('.new-tab'),
     client = data.client,
     tabUsername = data.username;
+
+  console.log(JSON.stringify(data));
 
   setButtonsClickable();
   renderTabList();
 
    $tabParent.removeChild($tabTemplate);
+  renderContact();
+
+  function renderContact(){
+    var $fullName = $page.querySelector('#fullname-detail'),
+      $username = $page.querySelector('#username-detail'),
+      $owed = $page.querySelector('#owed-detail'),
+      $text = $page.querySelector('#text-detail');
+    $fullName.innerHTML = data.fullName;
+    $username.innerHTML = data.username;
+    if (data.balance > 0) {
+      $text.innerHTML = 'owed to u';
+      $text.classList.add('positive');
+      $owed.classList.add('positive');
+    } else {
+      $text.innerHTML = 'owing';
+      $text.classList.add('negative');
+      $owed.classList.add('negative');
+    }
+    $owed.innerHTML = '$' + Number(data.balance).toFixed(2);
+  }
 
   function setButtonsClickable() {
     new Clickable($payment);
@@ -23,6 +46,16 @@ App.populator('detailedView', function ($page, data) {
     new Clickable($remind);
     $remind.addEventListener('click', function () {
       console.log('swag');
+    });
+
+    $addTab.addEventListener('click', function () {
+      App.load('addTab', {
+        client: client
+      }, {
+        transition: 'scale-in',
+        duration: 300, // in milliseconds
+        easing: 'ease-in-out'
+      })
     });
   }
 

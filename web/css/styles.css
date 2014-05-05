@@ -74,6 +74,19 @@
     color: #FFFFFF;
 }
 
+.app-topbar .app-title {
+    text-align: center;
+    letter-spacing: 7px;
+    padding-left: 9px;
+    font-size: 15px;
+    font-family: "Times New Roman", Times, serif;
+}
+
+.app-topbar {
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+    background-color: #49BBDF;
+}
+
 .kevin-button {
     background-color: rgb(176, 231, 184);
     font-size: 12px;

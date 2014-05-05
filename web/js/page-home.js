@@ -9,6 +9,8 @@ App.populator('home', function ($page, data) {
     $addTab = $page.querySelector('.new-tab'),
     client = data.username;
 
+  var openTabs = [];
+
   $tabParent.removeChild($tabTemplate);
 
   API.getSummaryData(client, function (users) {
@@ -20,7 +22,10 @@ App.populator('home', function ($page, data) {
   });
 
   $addTab.addEventListener('click', function () {
-    App.load('addContact', {username: data.username}, {
+    App.load('addContact', {
+      username: data.username,
+      filteredUsers: openTabs
+    }, {
       transition: 'scale-in',
       duration: 300, // in milliseconds
       easing: 'ease-in-out'
@@ -38,30 +43,33 @@ App.populator('home', function ($page, data) {
     }
     $tab.querySelector('#fullname-home').innerHTML = user.fullName;
     $tab.querySelector('#username-home').innerHTML = user.username;
-    var owed = $tab.querySelector('#owed-home');
-    var text = $tab.querySelector('#text-home');
+    var $owed = $tab.querySelector('#owed-home');
+    var $text = $tab.querySelector('#text-home');
     if (user.balance > 0) {
-      text.innerHTML = 'owed to u';
-      text.classList.add('positive');
-      owed.classList.add('positive');
+      $text.innerHTML = 'owed to u';
+      $text.classList.add('positive');
+      $owed.classList.add('positive');
     } else {
-      text.innerHTML = 'owing';
-      text.classList.add('negative');
-      owed.classList.add('negative');
+      $text.innerHTML = 'owing';
+      $text.classList.add('negative');
+      $owed.classList.add('negative');
     }
-    owed.innerHTML = '$' + Number(user.balance).toFixed(2);
+    $owed.innerHTML = '$' + Number(user.balance).toFixed(2);
     $tab.id = user.username;
 
-    setTabClickable($tab, user.username);
+    setTabClickable($tab, user);
+    openTabs.push(user.username);
     $tabParent.appendChild($tab);
   }
 
-  function setTabClickable($tabElement, username) {
+  function setTabClickable($tabElement, user) {
     new Clickable($tabElement);
     $tabElement.addEventListener('click', function () {
       var data = {
         client: client,
-        username: username
+        username: user.username,
+        balance: user.balance,
+        fullName: user.fullName
       };
       App.load('detailedView', data);
     });

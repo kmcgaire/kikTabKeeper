@@ -6,7 +6,7 @@ exports.createNewContact = function (owner, contact, callback) {
 exports.getSummaryData = function (username, callback) {
   var sampleData = [
     {
-      username: 'kmcgaire',
+      username: 'kik_debug2',
       fullName: 'Kevin McGaire',
       thumbnail: null,
       balance: -3.5

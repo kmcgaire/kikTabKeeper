@@ -10,12 +10,14 @@
         <link rel="kik-icon" href="img/icon.png">
 
         <!-- Styles -->
-        <link rel="stylesheet" href="css/styles.css">
+
         <link rel="stylesheet" href="css/app.css?inline=1">
+      <link rel="stylesheet" href="css/styles.css">
         <link rel="stylesheet" href="css/page-splash.css?inline=1">
         <link rel="stylesheet" href="css/page-home.css?inline=1">
         <link rel="stylesheet" href="css/page-detailedView.css?inline=1">
         <link rel="stylesheet" href="css/page-addContact.css?inline=1">
+        <link rel="stylesheet" href="css/page-addTab.css?inline=1">
     </head>
 
     <body>
@@ -76,7 +78,7 @@
           <div class="app-topbar">
             <div class="app-button left" data-back="true" data-autotitle="false">Back</div>
             <div class="app-title">Username</div>
-            <div class="app-button right add bill">+</div>
+            <div class="app-button right add new-tab">+</div>
           </div>
           <div class="app-content">
             <div class="profile-header">
@@ -151,16 +153,32 @@
 
         </div>
 
+        <div class="app-page addTab-page" data-page="addTab">
+          <div class="app-topbar">
+            <div class="app-button left" data-back="true" data-autotitle="false">Back</div>
+            <div class="app-title">Add Tab</div>
+          </div>
+          <div class="app-content">
+            <input class="app-input contact-input" id="description" placeholder="Enter Description">
+            <input class="app-input contact-input" id="amount" placeholder="Enter Amount">
+
+            <div class="buttons-section">
+              <div class="kevin-button create-tab">Create Tab</div>
+            </div>
+          </div>
+        </div>
+
 
         <!-- Scripts -->
         <script src="zerver/API.js"></script>
         <script type="text/javascript" src="js/kik.js?inline=1"></script>
-        <script type="text/javascript" src="js/app.js?inline=1"></script>
         <script src="js/app.js?inline=1"></script>
+        <script src="js/utils.js?inline=1"></script>
         <script src="js/page-splash.js"></script>
         <script src="js/page-home.js"></script>
         <script src="js/page-detailedView.js"></script>
         <script src="js/page-addContact.js?inline=1"></script>
+        <script src="js/page-addTab.js?inline=1"></script>
         <script src="js/main.js"></script>
     </body>
 </html>

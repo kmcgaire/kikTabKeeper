@@ -14,12 +14,7 @@ App.populator('addContact', function ($page, data) {
   new Clickable($createTab);
 
   $createTab.addEventListener('click', function () {
-    var desc = $page.querySelector('#description').value,
-      amount = $page.querySelector('#amount').value;
-    var isValidAmount = !isNaN(amount) && (amount.length != 0);
-    var isValidDescription = desc.length !== 0;
-    var isValidTab = isValidAmount && isValidDescription;
-    if (isValidTab){
+    validTab($page, function () {
       API.createNewContact(owner,$tab.id, function (res) {
         if(res){
           console.log('adding');
@@ -27,24 +22,14 @@ App.populator('addContact', function ($page, data) {
           console.log($tab.id);
         }
       })
-    } else if (!isValidDescription){
-      App.dialog({
-        title: 'Please Enter a Description',
-        okButton: 'Ok'
-      });
-    } else if (!isValidAmount) {
-      App.dialog({
-        title: 'Please Enter a Valid Amount',
-        okButton: 'Ok'
-      });
-    }
+    });
   });
 
   $selectFriend.addEventListener('click', function () {
     kik.pickUsers({
       minResults : 1 ,
       maxResults : 1 ,
-      filterSelf: true
+      filtered: data.filteredUsers
     }, function (users) {
       if ( !users ) {
         // action was cancelled by user
