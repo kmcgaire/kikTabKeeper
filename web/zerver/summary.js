@@ -23,8 +23,8 @@ exports.createInitalTabSumamry = function (user1, user2, amount, callback) {
 exports.getUsersSummary= function (username, callback) {
   Summary.find({
     $or: [
-      { user1: { username: username } },
-      { user2: { username: username } }
+      { 'user1.username': username },
+      { 'user2.username': username }
     ]
   }, function (err, tabList) {
     callback(tabList)
