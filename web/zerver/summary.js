@@ -2,15 +2,6 @@
  * Created by kevin on 5/6/2014.
  */
 
-/**
- * Created by kevin on 4/3/2014.
- */
-
-var lender = {
-  user1: 0,
-  user2: 1
-};
-
 var Summary = require('./db').collection('summary');
 
 
@@ -44,8 +35,13 @@ exports.getUsersSummary= function (username, callback) {
 exports.updateTabSummary = function (user1, user2, amount) {
   Summary.update({
     $or: [
-      { user1: { username: username } },
-      { user2: { username: username } }
+      {
+        user1: { username: user1 },
+        user2: { username: user2 }
+      }, {
+        user1: { username: user2 },
+        user2: { username: user1 }
+      }
     ]
   }, {
     $inc: {
