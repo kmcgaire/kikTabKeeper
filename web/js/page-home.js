@@ -7,30 +7,83 @@ App.populator('home', function ($page, data) {
   var $tabTemplate = $page.querySelector('.item.tab'),
     $tabParent = $tabTemplate.parentNode,
     $addTab = $page.querySelector('.new-tab'),
-    client = data.username;
+    $totalOwing = $page.querySelector('.total-you-owe .amount-owed'),
+    $totalOwedToU = $page.querySelector('.total-you-are-owed .amount-owed'),
+    $totalSummary = $page.querySelector('.total-balance .amount-owed'),
+    client = data,
+    loaded = false,
+    totalOwing = 0,
+    totalOwedToU = 0,
+    totalSummary = 0;
 
   var openTabs = [];
 
-  $tabParent.removeChild($tabTemplate);
-
-  API.getSummaryData(client, function (users) {
-    if (users) {
-      users.forEach(function (user) {
-        renderTab(user);
-      })
+  $page.addEventListener('appShow', function () {
+    if(loaded){
+      reloadElements();
+    } else {
+      loaded = true;
     }
   });
 
-  $addTab.addEventListener('click', function () {
-    App.load('addContact', {
-      username: data.username,
-      filteredUsers: openTabs
-    }, {
-      transition: 'scale-in',
-      duration: 300, // in milliseconds
-      easing: 'ease-in-out'
-    })
-  });
+  onLoad();
+
+  function onLoad() {
+    $tabParent.removeChild($tabTemplate);
+    configureTopBarButtonRight();
+    getData();
+  }
+  function reloadElements() {
+    removeChildren($tabParent);
+    getData();
+  }
+
+  function removeChildren($element) {
+    while ($element.firstChild) {
+      $element.removeChild($element.firstChild);
+    }
+  }
+  function getData() {
+    API.getSummaryData(client.username, function (users) {
+      console.log('Retrieving ' + JSON.stringify(users) + 'from db');
+      totalOwedToU = totalOwing = totalSummary = 0;
+      if (users) {
+        users.forEach(function (user) {
+          renderTab(user);
+        })
+      }
+      reloadSummaryBar();
+    });
+  }
+
+  function reloadSummaryBar() {
+    $totalOwing.innerHTML = '$' + Number(totalOwing).toFixed(2);
+    $totalOwedToU.innerHTML = '$' + Number(totalOwedToU).toFixed(2);
+    $totalSummary.classList.remove('positive');
+    $totalSummary.classList.remove('negative');
+    if(totalSummary <= 0) {
+      $totalSummary.classList.add('negative');
+      $totalSummary.innerHTML = '$' + Number( -1 * totalSummary).toFixed(2);
+    } else {
+      $totalSummary.classList.add('positive');
+      $totalSummary.innerHTML = '$' + Number(totalSummary).toFixed(2);
+    }
+  }
+
+  function configureTopBarButtonRight() {
+    $addTab.addEventListener('click', function () {
+      App.load('addContact', {
+        client: client,
+        filteredUsers: openTabs
+      }, {
+        transition: 'scale-in',
+        duration: 300, // in milliseconds
+        easing: 'ease-in-out'
+      })
+    });
+  }
+
+
 
 
   function renderTab(user) {
@@ -42,6 +95,12 @@ App.populator('home', function ($page, data) {
     var $owed = $tab.querySelector('#owed-home'),
       $text = $tab.querySelector('#text-home');
     renderOwing($owed, $text, user.balance);
+    if(user.balance <= 0) {
+      totalOwing += Number(-1* user.balance);
+    } else {
+      totalOwedToU += Number(user.balance);
+    }
+    totalSummary += Number(user.balance);
     $tab.id = user.username;
 
     setTabClickable($tab, user);
@@ -53,7 +112,7 @@ App.populator('home', function ($page, data) {
     new Clickable($tabElement);
     $tabElement.addEventListener('click', function () {
       var data = {
-        client: client,
+        client: client.username,
         username: user.username,
         balance: user.balance,
         fullName: user.fullName,
