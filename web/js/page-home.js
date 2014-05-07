@@ -35,26 +35,13 @@ App.populator('home', function ($page, data) {
 
   function renderTab(user) {
     var $tab = $tabTemplate.cloneNode(true);
-    var userPic = $tab.querySelector('.user-thumbnail');
-    if (user.thumbnail) {
-      userPic.src = user.thumbnail;
-    } else {
-      userPic.src = "img/noprofile.png";
-    }
+    var $userPic = $tab.querySelector('.user-thumbnail');
+    renderThumbnail($userPic, user.thumbnail);
     $tab.querySelector('#fullname-home').innerHTML = user.fullName;
     $tab.querySelector('#username-home').innerHTML = user.username;
-    var $owed = $tab.querySelector('#owed-home');
-    var $text = $tab.querySelector('#text-home');
-    if (user.balance > 0) {
-      $text.innerHTML = 'owed to u';
-      $text.classList.add('positive');
-      $owed.classList.add('positive');
-    } else {
-      $text.innerHTML = 'owing';
-      $text.classList.add('negative');
-      $owed.classList.add('negative');
-    }
-    $owed.innerHTML = '$' + Number(user.balance).toFixed(2);
+    var $owed = $tab.querySelector('#owed-home'),
+      $text = $tab.querySelector('#text-home');
+    renderOwing($owed, $text, user.balance);
     $tab.id = user.username;
 
     setTabClickable($tab, user);
@@ -69,7 +56,8 @@ App.populator('home', function ($page, data) {
         client: client,
         username: user.username,
         balance: user.balance,
-        fullName: user.fullName
+        fullName: user.fullName,
+        thumbnail: user.thumbnail
       };
       App.load('detailedView', data);
     });

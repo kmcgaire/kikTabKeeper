@@ -20,22 +20,13 @@ App.populator('detailedView', function ($page, data) {
   renderContact();
 
   function renderContact(){
-    var $fullName = $page.querySelector('#fullname-detail'),
-      $username = $page.querySelector('#username-detail'),
-      $owed = $page.querySelector('#owed-detail'),
-      $text = $page.querySelector('#text-detail');
-    $fullName.innerHTML = data.fullName;
-    $username.innerHTML = data.username;
-    if (data.balance > 0) {
-      $text.innerHTML = 'owed to u';
-      $text.classList.add('positive');
-      $owed.classList.add('positive');
-    } else {
-      $text.innerHTML = 'owing';
-      $text.classList.add('negative');
-      $owed.classList.add('negative');
-    }
-    $owed.innerHTML = '$' + Number(data.balance).toFixed(2);
+    var $owed = $page.querySelector('#owed-detail'),
+      $text = $page.querySelector('#text-detail'),
+      $userPic = $page.querySelector('.user-picture');
+    renderThumbnail($userPic, data.thumbnail);
+    renderOwing($owed, $text, data.balance);
+    $page.querySelector('#fullname-detail').innerHTML = data.fullName;
+    $page.querySelector('#username-detail').innerHTML = data.username;
   }
 
   function setButtonsClickable() {
@@ -45,7 +36,14 @@ App.populator('detailedView', function ($page, data) {
     });
     new Clickable($remind);
     $remind.addEventListener('click', function () {
-      console.log('swag');
+      kik.send({
+        title     : 'PlaceHolder'         ,
+        text      : 'Moar PlaceHolders'          ,
+        pic       : 'http://mysite.com/pic' , // optional
+        big       : true                    , // optional
+        noForward : true                    , // optional
+        data      : { some : 'json' }         // optional
+      });
     });
 
     $addTab.addEventListener('click', function () {
@@ -71,13 +69,11 @@ App.populator('detailedView', function ($page, data) {
 
   function renderTab(tab) {
     var $tabItem = $tabTemplate.cloneNode(true);
-    var $description = $tabItem.querySelector('#description'),
-      $date = $tabItem.querySelector('#date-created'),
-      $owing = $tabItem.querySelector('#owing'),
+    var $owing = $tabItem.querySelector('#owing'),
       $amount = $tabItem.querySelector('#owing-amount');
 
-    $description.innerHTML = tab.description;
-    $date.innerHTML = tab.date;
+    $tabItem.querySelector('#description').innerHTML = tab.description;
+    $tabItem.querySelector('#date-created').innerHTML = tab.date;
     if (tab.lender.username === data.client) {
       $owing.innerHTML = 'owed to u';
       $owing.classList.add('positive');

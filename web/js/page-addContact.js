@@ -44,12 +44,8 @@ App.populator('addContact', function ($page, data) {
   });
 
   function renderUser(user) {
-    var userPic = $tab.querySelector('.user-thumbnail');
-    if (user.thumbnail) {
-      userPic.src = user.thumbnail;
-    } else {
-      userPic.src = "img/noprofile.png";
-    }
+    var $userPic = $tab.querySelector('.user-thumbnail');
+    renderThumbnail($userPic, user.thumbnail);
     $tab.querySelector('#fullname-add').innerHTML = user.fullName;
     $tab.querySelector('#username-add').innerHTML = user.username;
     $tab.id = user.username;

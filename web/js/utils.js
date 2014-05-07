@@ -22,3 +22,24 @@ function validTab($page, callback) {
     });
   }
 }
+
+function renderThumbnail($element, img){
+  if (img) {
+    $element.src = img;
+  } else {
+    $element.src = "img/noprofile.png";
+  }
+}
+
+function renderOwing($owed, $text, balance) {
+  if (balance > 0) {
+    $text.innerHTML = 'owed to u';
+    $text.classList.add('positive');
+    $owed.classList.add('positive');
+  } else {
+    $text.innerHTML = 'owing';
+    $text.classList.add('negative');
+    $owed.classList.add('negative');
+  }
+  $owed.innerHTML = '$' + Number(balance).toFixed(2);
+}
