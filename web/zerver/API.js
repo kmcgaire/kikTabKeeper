@@ -2,8 +2,12 @@
 
 var BackendSummary = require('./summary.js');
 
-exports.createNewContact = function (owner, contact, callback) {
-  callback(true);
+exports.createNewContactandTab = function (owner, contact, amount, description, callback) {
+  if(owner && contact){
+    BackendSummary.createInitalTabSumamry(owner,contact,amount,callback);
+  } else {
+  callback(null)
+  }
 };
 
 exports.getSummaryData = function (username, callback) {
@@ -25,9 +29,9 @@ exports.getSummaryData = function (username, callback) {
           dataToInsert.thumbnail = summaryTab.user1.thumbnail;
           dataToInsert.balance = summaryTab.amount;
         } else {
-          console.log('--------------------------------------------------------------------------------')
-          console.log('Returned an item from DB that should not have match query parameters')
-          console.log('--------------------------------------------------------------------------------')
+          console.log('--------------------------------------------------------------------------------');
+          console.log('Returned an item from DB that should not have match query parameters');
+          console.log('--------------------------------------------------------------------------------');
         }
         if(dataToInsert){
           dataToReturn.push(dataToInsert);
