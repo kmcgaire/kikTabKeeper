@@ -41,7 +41,7 @@ exports.getUsersSummary= function (username, callback) {
 };
 
 // user1 owes user 2 the amount
-exports.updateTabSummary = function (user1, user2, amount, callback) {
+exports.updateTabSummary = function (user1, user2, amount) {
   Summary.update({
     $or: [
       { user1: { username: username } },
