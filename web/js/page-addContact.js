@@ -8,18 +8,33 @@ App.populator('addContact', function ($page, data) {
     $createTab = $page.querySelector('.create-initial-tab'),
     hasSelectedFriend = false,
     $isSelected = $page.querySelector('.isSelected'),
-    owner = data.username;
+    client = data.client;
 
   new Clickable($selectFriend);
   new Clickable($createTab);
 
   $createTab.addEventListener('click', function () {
-    validTab($page, function () {
-      API.createNewContact(owner,$tab.id, function (res) {
+    validTab($page, function (amount, description) {
+      var creator = {
+        username: client.username,
+        fullName: client.fullName,
+        thumbnail: client.thumbnail
+      };
+      var otheruser = {
+        username: $page.querySelector('#username-add').innerHTML,
+        fullName: $page.querySelector('#fullname-add').innerHTML,
+        thumbnail: $page.querySelector('.user-thumbnail').src
+      };
+      console.log("Sending Creator of");
+      console.log(JSON.stringify(creator));
+      console.log("Sending otheruser as");
+      console.log(JSON.stringify(otheruser));
+      API.createNewContactandTab(otheruser, creator, amount, description, function (res) {
         if(res){
-          console.log('adding');
-          console.log(owner);
-          console.log($tab.id);
+          console.log('Successfully Added user1:' + JSON.stringify(otheruser));
+          console.log('Successfully Added user2:' + JSON.stringify(creator));
+          console.log('Successfully Created Amount:' + amount);
+          App.back();
         }
       })
     });
