@@ -25,15 +25,8 @@ App.populator('addContact', function ($page, data) {
         fullName: $page.querySelector('#fullname-add').innerHTML,
         thumbnail: $page.querySelector('.user-thumbnail').src
       };
-      console.log("Sending Creator of");
-      console.log(JSON.stringify(creator));
-      console.log("Sending otheruser as");
-      console.log(JSON.stringify(otheruser));
-      API.createNewContactandTab(otheruser, creator, amount, description, function (res) {
+      API.createNewContactandTab(creator, otheruser, amount, description, function (res) {
         if(res){
-          console.log('Successfully Added user1:' + JSON.stringify(otheruser));
-          console.log('Successfully Added user2:' + JSON.stringify(creator));
-          console.log('Successfully Created Amount:' + amount);
           App.back();
         }
       })
