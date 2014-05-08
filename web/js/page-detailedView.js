@@ -9,46 +9,60 @@ App.populator('detailedView', function ($page, data) {
     $tabParent = $tabTemplate.parentNode,
     $addTab = $page.querySelector('.new-tab'),
     client = data.client,
-    tabUsername = data.username;
+    otheruser = data.otheruser,
+    loaded = false;
 
   console.log(JSON.stringify(data));
 
-  setButtonsClickable();
-  renderTabList();
+  $page.addEventListener('appShow', function () {
+    if(loaded){
+      reloadElements();
+    } else {
+      loaded = true;
+    }
+  });
 
-   $tabParent.removeChild($tabTemplate);
-  renderContact();
+  onLoad();
+
+  function onLoad() {
+    setButtonsClickable();
+    renderTabList();
+    $tabParent.removeChild($tabTemplate);
+    renderContact();
+  }
+  function reloadElements() {
+    removeChildren($tabParent);
+    renderTabList();
+  }
 
   function renderContact(){
     var $owed = $page.querySelector('#owed-detail'),
       $text = $page.querySelector('#text-detail'),
       $userPic = $page.querySelector('.user-picture');
-    renderThumbnail($userPic, data.thumbnail);
-    renderOwing($owed, $text, data.balance);
-    $page.querySelector('#fullname-detail').innerHTML = data.fullName;
-    $page.querySelector('#username-detail').innerHTML = data.username;
+    renderThumbnail($userPic, otheruser.thumbnail);
+    renderOwing($owed, $text, otheruser.balance);
+    $page.querySelector('#fullname-detail').innerHTML = otheruser.fullName;
+    $page.querySelector('#username-detail').innerHTML = otheruser.username;
   }
 
   function setButtonsClickable() {
     new Clickable($payment);
     $payment.addEventListener('click', function () {
-      console.log('yolo');
+      App.dialog({
+        title: 'Will be implemented in the future',
+        text: 'For now add another tab. Label it payment with a negative number if its the other person paying',
+        okButton: 'Ok'
+      });
     });
     new Clickable($remind);
     $remind.addEventListener('click', function () {
-      kik.send({
-        title     : 'PlaceHolder'         ,
-        text      : 'Moar PlaceHolders'          ,
-        pic       : 'http://mysite.com/pic' , // optional
-        big       : true                    , // optional
-        noForward : true                    , // optional
-        data      : { some : 'json' }         // optional
-      });
+      kik.openConversation(otheruser.username);
     });
 
     $addTab.addEventListener('click', function () {
       App.load('addTab', {
-        client: client
+        client: client,
+        otheruser: otheruser
       }, {
         transition: 'scale-in',
         duration: 300, // in milliseconds
@@ -58,7 +72,7 @@ App.populator('detailedView', function ($page, data) {
   }
 
   function renderTabList() {
-    API.getTabList(client, tabUsername, function (tabList) {
+    API.getTabList(client.username, otheruser.username , function (tabList) {
       if(tabList){
         tabList.forEach(function (tab) {
           renderTab(tab);
@@ -71,10 +85,15 @@ App.populator('detailedView', function ($page, data) {
     var $tabItem = $tabTemplate.cloneNode(true);
     var $owing = $tabItem.querySelector('#owing'),
       $amount = $tabItem.querySelector('#owing-amount');
-
-    $tabItem.querySelector('#description').innerHTML = tab.description;
+    var desc;
+    if(tab.description.length >= 20) {
+      desc = tab.description.substring(0,20) + '...';
+    } else {
+      desc = tab.description;
+    }
+    $tabItem.querySelector('#description').innerHTML = desc;
     $tabItem.querySelector('#date-created').innerHTML = tab.date;
-    if (tab.lender.username === data.client) {
+    if (tab.lender.username === client.username) {
       $owing.innerHTML = 'owed to u';
       $owing.classList.add('positive');
       $amount.classList.add('positive');
