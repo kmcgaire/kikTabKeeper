@@ -43,3 +43,9 @@ function renderOwing($owed, $text, balance) {
   }
   $owed.innerHTML = '$' + Number(balance).toFixed(2);
 }
+
+function removeChildren($element) {
+  while ($element.firstChild) {
+    $element.removeChild($element.firstChild);
+  }
+}

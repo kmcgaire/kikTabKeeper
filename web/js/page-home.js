@@ -38,14 +38,8 @@ App.populator('home', function ($page, data) {
     getData();
   }
 
-  function removeChildren($element) {
-    while ($element.firstChild) {
-      $element.removeChild($element.firstChild);
-    }
-  }
   function getData() {
     API.getSummaryData(client.username, function (users) {
-      console.log('Retrieving ' + JSON.stringify(users) + 'from db');
       totalOwedToU = totalOwing = totalSummary = 0;
       if (users) {
         users.forEach(function (user) {
@@ -112,11 +106,13 @@ App.populator('home', function ($page, data) {
     new Clickable($tabElement);
     $tabElement.addEventListener('click', function () {
       var data = {
-        client: client.username,
-        username: user.username,
-        balance: user.balance,
-        fullName: user.fullName,
-        thumbnail: user.thumbnail
+        client: client,
+        otheruser: {
+          username: user.username,
+          balance: user.balance,
+          fullName: user.fullName,
+          thumbnail: user.thumbnail
+        }
       };
       App.load('detailedView', data);
     });
