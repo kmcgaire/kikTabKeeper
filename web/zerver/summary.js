@@ -20,6 +20,7 @@ exports.createInitalTabSumamry = function (user1, user2, amount, callback) {
   Summary.insert(summaryToInsert);
   console.log("inserted");
   callback(summaryToInsert);
+  console.log('callback');
 };
 
 exports.getUsersSummary= function (username, callback) {

@@ -16,7 +16,9 @@ exports.insertTab = function (user1, user2, amount, currency, description, date,
     date: date
   };
   Tabs.insert(tabToInsert);
-  callback(tabToInsert);
+  if(callback){
+    callback(tabToInsert);
+  }
 };
 
 exports.getTabs = function (username1, username2, callback) {
