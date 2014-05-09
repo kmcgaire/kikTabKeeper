@@ -8,9 +8,9 @@ function validTab($page, callback) {
   var isValidAmount = !isNaN(amount) && (amount.length != 0);
   var isValidDescription = desc.length !== 0;
   var isValidTab = isValidAmount && isValidDescription;
-  if (isValidTab){
-   callback(amount, desc);
-  } else if (!isValidDescription){
+  if (isValidTab) {
+    callback(amount, desc);
+  } else if (!isValidDescription) {
     App.dialog({
       title: 'Please Enter a Description',
       okButton: 'Ok'
@@ -23,7 +23,7 @@ function validTab($page, callback) {
   }
 }
 
-function renderThumbnail($element, img){
+function renderThumbnail($element, img) {
   if (img) {
     $element.src = img;
   } else {

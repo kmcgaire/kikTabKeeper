@@ -18,7 +18,6 @@
     display: none;
 }
 
-
 .initial-tab {
     text-align: center;
     letter-spacing: 4px;
@@ -30,13 +29,13 @@
     background-color: rgba(73, 187, 223, 0.25);
 }
 
-.contact-input{
+.contact-input {
     border-radius: 10px;
     margin: 11px;
     width: 93%;
 }
 
-.create-initial-tab{
+.create-initial-tab {
     height: 30px;
     margin: 5px 50px;
     line-height: 30px;

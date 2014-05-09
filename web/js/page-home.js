@@ -19,7 +19,7 @@ App.populator('home', function ($page, data) {
   var openTabs = [];
 
   $page.addEventListener('appShow', function () {
-    if(loaded){
+    if (loaded) {
       reloadElements();
     } else {
       loaded = true;
@@ -33,6 +33,7 @@ App.populator('home', function ($page, data) {
     configureTopBarButtonRight();
     getData();
   }
+
   function reloadElements() {
     removeChildren($tabParent);
     getData();
@@ -55,9 +56,9 @@ App.populator('home', function ($page, data) {
     $totalOwedToU.innerHTML = '$' + Number(totalOwedToU).toFixed(2);
     $totalSummary.classList.remove('positive');
     $totalSummary.classList.remove('negative');
-    if(totalSummary <= 0) {
+    if (totalSummary <= 0) {
       $totalSummary.classList.add('negative');
-      $totalSummary.innerHTML = '$' + Number( -1 * totalSummary).toFixed(2);
+      $totalSummary.innerHTML = '$' + Number(-1 * totalSummary).toFixed(2);
     } else {
       $totalSummary.classList.add('positive');
       $totalSummary.innerHTML = '$' + Number(totalSummary).toFixed(2);
@@ -78,8 +79,6 @@ App.populator('home', function ($page, data) {
   }
 
 
-
-
   function renderTab(user) {
     var $tab = $tabTemplate.cloneNode(true);
     var $userPic = $tab.querySelector('.user-thumbnail');
@@ -89,8 +88,8 @@ App.populator('home', function ($page, data) {
     var $owed = $tab.querySelector('#owed-home'),
       $text = $tab.querySelector('#text-home');
     renderOwing($owed, $text, user.balance);
-    if(user.balance <= 0) {
-      totalOwing += Number(-1* user.balance);
+    if (user.balance <= 0) {
+      totalOwing += Number(-1 * user.balance);
     } else {
       totalOwedToU += Number(user.balance);
     }

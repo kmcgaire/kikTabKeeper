@@ -10,9 +10,9 @@ App.populator('splash', function ($page) {
         warning.style.display = 'block';
       } else {
         App.load('home', user, {
-          transition : 'fade'  ,
-          duration   : 1000           , // in milliseconds
-          easing     : 'ease'
+          transition: 'fade',
+          duration: 1000, // in milliseconds
+          easing: 'ease'
         });
       }
     });

@@ -1,5 +1,5 @@
 (function (App) {
-   kik.ready(function(){
-     App.load('splash');
-   });
+  kik.ready(function () {
+    App.load('splash');
+  });
 })(App);

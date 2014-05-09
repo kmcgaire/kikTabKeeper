@@ -4,13 +4,12 @@
 
 App.populator('addTab', function ($page, data) {
   var $createTab = $page.querySelector('.create-tab'),
-    client= data.client,
+    client = data.client,
     otheruser = data.otheruser;
 
   $createTab.addEventListener('click', function () {
     validTab($page, function (amount, description) {
       API.createTab(client, otheruser, amount, description, function (res) {
-        console.log(res);//Placeholder
         App.back();
       })
     })

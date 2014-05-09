@@ -16,7 +16,7 @@ App.populator('detailedView', function ($page, data) {
     totalOwing = 0;
 
   $page.addEventListener('appShow', function () {
-    if(loaded){
+    if (loaded) {
       reloadElements();
     } else {
       loaded = true;
@@ -31,12 +31,13 @@ App.populator('detailedView', function ($page, data) {
     $tabParent.removeChild($tabTemplate);
     renderContact();
   }
+
   function reloadElements() {
     removeChildren($tabParent);
     renderTabList();
   }
 
-  function renderContact(){
+  function renderContact() {
     var $userPic = $page.querySelector('.user-picture');
     renderThumbnail($userPic, otheruser.thumbnail);
     $page.querySelector('#fullname-detail').innerHTML = otheruser.fullName;
@@ -71,11 +72,11 @@ App.populator('detailedView', function ($page, data) {
 
   function renderTabList() {
     totalOwing = 0;
-    API.getTabList(client.username, otheruser.username , function (tabList) {
-      if(tabList){
+    API.getTabList(client.username, otheruser.username, function (tabList) {
+      if (tabList) {
         tabList.forEach(function (tab) {
           renderTab(tab);
-        })
+        });
         renderOwing($owed, $text, totalOwing);
       }
     })
@@ -86,8 +87,8 @@ App.populator('detailedView', function ($page, data) {
     var $owing = $tabItem.querySelector('#owing'),
       $amount = $tabItem.querySelector('#owing-amount');
     var desc;
-    if(tab.description.length >= 20) {
-      desc = tab.description.substring(0,20) + '...';
+    if (tab.description.length >= 20) {
+      desc = tab.description.substring(0, 20) + '...';
     } else {
       desc = tab.description;
     }

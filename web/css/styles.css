@@ -67,10 +67,17 @@
     top: 0;
     right: 0;
 }
-.app-topbar .app-button.right.add {
+
+.app-ios .app-topbar .app-button.right.add {
     font-weight: 600;
     font-size: 30px;
     line-height: 39px;
+    color: #FFFFFF;
+}
+
+.app-android .app-topbar .app-button.right.add {
+    font-weight: 600;
+    font-size: 30px;
     color: #FFFFFF;
 }
 

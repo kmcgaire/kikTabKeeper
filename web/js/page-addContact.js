@@ -26,7 +26,7 @@ App.populator('addContact', function ($page, data) {
         thumbnail: $page.querySelector('.user-thumbnail').src
       };
       API.createNewContactandTab(creator, otheruser, amount, description, function (res) {
-        if(res){
+        if (res) {
           App.back();
         }
       })
@@ -35,11 +35,11 @@ App.populator('addContact', function ($page, data) {
 
   $selectFriend.addEventListener('click', function () {
     kik.pickUsers({
-      minResults : 1 ,
-      maxResults : 1 ,
+      minResults: 1,
+      maxResults: 1,
       filtered: data.filteredUsers
     }, function (users) {
-      if ( !users ) {
+      if (!users) {
         // action was cancelled by user
       } else {
         users.forEach(function (user) {

@@ -11,7 +11,7 @@ var Summary = require('./db').collection('summary');
 //   fullName: fullName
 //   thumbnail: string
 exports.createInitalTabSumamry = function (user1, user2, amount, callback) {
-  var summaryToInsert= {
+  var summaryToInsert = {
     user1: user1,
     user2: user2,
     amount: amount
@@ -20,7 +20,7 @@ exports.createInitalTabSumamry = function (user1, user2, amount, callback) {
   callback(summaryToInsert);
 };
 
-exports.getUsersSummary= function (username, callback) {
+exports.getUsersSummary = function (username, callback) {
   Summary.find({
     $or: [
       { 'user1.username': username },
@@ -36,10 +36,11 @@ exports.updateTabSummary = function (username1, username2, amount) {
   Summary.update({
     $or: [
       {
-        'user1.username': username1 ,
+        'user1.username': username1,
         'user2.username': username2
-      }, {
-        'user1.username': username2 ,
+      },
+      {
+        'user1.username': username2,
         'user2.username': username1
       }
     ]

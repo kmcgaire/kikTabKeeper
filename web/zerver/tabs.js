@@ -16,7 +16,7 @@ exports.insertTab = function (user1, user2, amount, currency, description, date,
     date: date
   };
   Tabs.insert(tabToInsert);
-  if(callback){
+  if (callback) {
     callback(tabToInsert);
   }
 };
@@ -25,10 +25,11 @@ exports.getTabs = function (username1, username2, callback) {
   Tabs.find({
     $or: [
       {
-        'user1.username': username1 ,
+        'user1.username': username1,
         'user2.username': username2
-      }, {
-        'user1.username': username2 ,
+      },
+      {
+        'user1.username': username2,
         'user2.username': username1
       }
     ]
