@@ -4,6 +4,7 @@ var BackendSummary = require('./summary.js');
 var BackendTabs= require('./tabs.js');
 
 exports.createNewContactandTab = function (owner, contact, amount, description, callback) {
+  console.log("Creating new Contact in Summary");
   if(owner && contact){
     var user2 = {
       username: owner.username,
