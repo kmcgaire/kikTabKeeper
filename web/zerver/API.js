@@ -17,8 +17,8 @@ exports.createNewContactandTab = function (owner, contact, amount, description, 
       thumbnail: contact.thumbnail
     };
     var newAmount = Number(amount);
-    BackendTabs.insertTab(user1, user2, newAmount, 'dollars', description, new Date().getTime(), callback);
     BackendSummary.createInitalTabSumamry(user1,user2,newAmount,callback);
+    BackendTabs.insertTab(user1, user2, newAmount, 'dollars', description, new Date().getTime(), callback);
   } else {
   callback(null)
   }
