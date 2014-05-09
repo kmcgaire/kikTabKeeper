@@ -35,13 +35,13 @@ App.populator('home', function ($page, data) {
   }
 
   function reloadElements() {
-    removeChildren($tabParent);
     getData();
   }
 
   function getData() {
     API.getSummaryData(client.username, function (users) {
       totalOwedToU = totalOwing = totalSummary = 0;
+      removeChildren($tabParent);
       if (users) {
         users.forEach(function (user) {
           renderTab(user);
