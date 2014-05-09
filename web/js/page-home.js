@@ -41,8 +41,8 @@ App.populator('home', function ($page, data) {
   function getData() {
     API.getSummaryData(client.username, function (users) {
       totalOwedToU = totalOwing = totalSummary = 0;
-      removeChildren($tabParent);
       if (users) {
+        removeChildren($tabParent);
         users.forEach(function (user) {
           renderTab(user);
         })
