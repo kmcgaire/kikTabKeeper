@@ -10,9 +10,10 @@ App.populator('detailedView', function ($page, data) {
     $addTab = $page.querySelector('.new-tab'),
     client = data.client,
     otheruser = data.otheruser,
-    loaded = false;
-
-  console.log(JSON.stringify(data));
+    loaded = false,
+    $owed = $page.querySelector('#owed-detail'),
+    $text = $page.querySelector('#text-detail'),
+    totalOwing = 0;
 
   $page.addEventListener('appShow', function () {
     if(loaded){
@@ -36,11 +37,8 @@ App.populator('detailedView', function ($page, data) {
   }
 
   function renderContact(){
-    var $owed = $page.querySelector('#owed-detail'),
-      $text = $page.querySelector('#text-detail'),
-      $userPic = $page.querySelector('.user-picture');
+    var $userPic = $page.querySelector('.user-picture');
     renderThumbnail($userPic, otheruser.thumbnail);
-    renderOwing($owed, $text, otheruser.balance);
     $page.querySelector('#fullname-detail').innerHTML = otheruser.fullName;
     $page.querySelector('#username-detail').innerHTML = otheruser.username;
   }
@@ -72,11 +70,13 @@ App.populator('detailedView', function ($page, data) {
   }
 
   function renderTabList() {
+    totalOwing = 0;
     API.getTabList(client.username, otheruser.username , function (tabList) {
       if(tabList){
         tabList.forEach(function (tab) {
           renderTab(tab);
         })
+        renderOwing($owed, $text, totalOwing);
       }
     })
   }
@@ -97,10 +97,12 @@ App.populator('detailedView', function ($page, data) {
       $owing.innerHTML = 'owed to u';
       $owing.classList.add('positive');
       $amount.classList.add('positive');
+      totalOwing += tab.amount;
     } else {
       $owing.innerHTML = 'owing';
       $owing.classList.add('negative');
       $amount.classList.add('negative');
+      totalOwing -= tab.amount;
     }
     $amount.innerHTML = '$' + Number(tab.amount).toFixed(2);
 

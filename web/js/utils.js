@@ -41,7 +41,7 @@ function renderOwing($owed, $text, balance) {
     $text.classList.add('negative');
     $owed.classList.add('negative');
   }
-  $owed.innerHTML = '$' + Number(balance).toFixed(2);
+  $owed.innerHTML = '$' + Math.abs(Number(balance)).toFixed(2);
 }
 
 function removeChildren($element) {
